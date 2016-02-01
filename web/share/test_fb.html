@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>测试--FaceBook</title>
+  <script type="text/javascript" src="/webframework/js/jquery-1.11.1.min.js"></script>
+  <script language="javascript" type="text/javascript">
+  //公用调用
+  function getCode(){
+   var url = "https://graph.facebook.com/oauth/authorize";//请求用户授权
+   var client_id = document.getElementById("client_id").value;
+   var scope = document.getElementById("scope").value;
+   var state = document.getElementById("state").value;
+   var redirect_uri = document.getElementById("redirect_uri").value;
+   url = url+"?client_id="+client_id+"&redirect_uri="+redirect_uri+"&scope="+scope+"&state="+state; 
+   document.getElementById("url").value = url;
+   window.open(url);
+  }
+  function getToken(){
+   document.forms.TokenForm.action = "https://graph.facebook.com/oauth/access_token";
+   document.forms.TokenForm.submit();
+  }
+  
+  function addOne(){
+  
+  }
+  </script>
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1510112482638466',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+ </head>
+ <body>
+ <form name ="TokenForm" method="post" action="">
+  	<table>
+  		<tr>
+  		  <td>
+  		  	appkey(client_id):
+  		  	 <input type="text" id="client_id"  name="client_id" value="1510112482638466" size="100">
+  		  </td>
+  		</tr>
+  		<tr>
+  		  <td>
+  		  	redirect_uri:
+  		  	 <input type="text" id="redirect_uri" value="http://huayun.china.com/ApiAction.do?processID=callBackFB" size="100">
+  		  </td>
+  		</tr>
+  		<tr>
+  		  <td>
+  		  	scope:
+  		  	 <input type="text" id="scope" value="user_photos,user_about_me,user_actions.music,public_profile" size="100">
+  		  </td>
+  		</tr>
+  		<tr>
+  		  <td>
+  		  	state:
+  		  	 <input type="text" id="state" value="" size="100">
+  		  </td>
+  		</tr>
+  		<tr>
+  		  <td>
+  		  	url:
+  		  	 <input type="text" id="url" value="" size="100">
+  		  </td>
+  		</tr>
+  		<tr>
+  		  <td >
+  		  	<input type="button" onclick="getCode()" value ="获取code">
+  		  </td>
+  		</tr>
+  		<tr>
+  			<td >
+  				========================================================
+  			</td>
+  		</tr>
+		<tr>
+			<td>
+				client_secret:<input type="text" name="client_secret" value="471ccd36e73bc861c189386a2ddc9bac" size="100">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				code:<input type="text" name="code" value="AQCWBrDqTSGRtiwc93uJiiodOEh-69glMSdXiMMmpF5mT7xmbpwi2Qn4Smgsx0x3BhypRRY2C2bnLzhhT4IoUgNUfp6h7-ALFweuggf6XEMUGapDsSEdKUsxH8a2eFWA4dLT6TI5cuquk-4f26UaNckxowenu7dEoYWEJ8DprAmN9Lj5ZkVb56kROd1dSeM2Y_sq3Tvz0rdla-C7cunt5wm4WFK5CakVdfO7CA_fIziBNeHUz2VFmtJwgHioDHKWn1ujg7CbdNc231F6IAwcKcxjyAnVoFdrFz-KaTVfUyXL7JDNmWiCBN7i56V-3k7oo1d2tq2MjaYSrCIZH4dv8d9I#_=_" size="100">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				redirect_uri:<input type="text" name="redirect_uri" value="http://huayun.china.com/ApiAction.do?processID=callBackFB" size="100">
+			</td>
+		</tr>
+  		<tr>
+  		  <td >
+  		  	<input type="button" onclick="getToken()" value ="获取Token">
+  		  </td>
+  		</tr>
+  	</table>
+  	<div
+	  class="fb-like"
+	  data-share="true"
+	  data-width="450"
+	  data-show-faces="true">
+	</div>
+  	</form>
+ </body>
+</html>
