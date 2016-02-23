@@ -1,3 +1,7 @@
 # openDemo
 开放平台实例
-adsfafadf
+
+微信
+微博
+优酷
+土豆
